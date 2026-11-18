@@ -1,0 +1,207 @@
+import type { CoursePackage } from '../../types';
+import { generateCurriculumChapters, DAILY_CONVERSATION_SENTENCES, WORKPLACE_SENTENCES } from './corpusBuilder';
+
+const sceneCorpus = [...DAILY_CONVERSATION_SENTENCES, ...WORKPLACE_SENTENCES];
+
+export const SCENES_COURSES: CoursePackage[] = [
+  {
+    id: 'course-scene-airport',
+    title: '国际机场出行 · 登机转机全流程通关 (12章全集)',
+    category: 'scenes',
+    categoryName: '场景英语',
+    coverGradient: 'from-sky-500 via-blue-600 to-indigo-800',
+    icon: '✈️',
+    description: '从购票选座、行李托运、安检海关申报到联程中转与行李遗失赔偿，全流程无忧交流。',
+    difficulty: '入门 A1',
+    tags: ['机场全流程', '出境自由行', '行李托运', '海关申报'],
+    chapters: generateCurriculumChapters('air', [
+      { title: '第 1 章 · 机场航站楼寻路与值机排队' },
+      { title: '第 2 章 · 护照核验与选座特殊要求' },
+      { title: '第 3 章 · 超大与易碎行李托运' },
+      { title: '第 4 章 · 机场安全检查与随身物品' },
+      { title: '第 5 章 · 出境海关问询与现金申报' },
+      { title: '第 6 章 · 登机口变更与广播辨听' },
+      { title: '第 7 章 · 国际航班机舱点餐与毛毯' },
+      { title: '第 8 章 · 跨国联程转机与快速通道' },
+      { title: '第 9 章 · 航班机械延误与免费餐券' },
+      { title: '第 10 章 · 到达大厅行李提取与传送带' },
+      { title: '第 11 章 · 行李破损报失与申赔程序' },
+      { title: '第 12 章 · 机场免税提货与接机服务' }
+    ], sceneCorpus)
+  },
+  {
+    id: 'course-scene-hotel',
+    title: '涉外酒店入住 · 前台沟通与客房服务 (12章全集)',
+    category: 'scenes',
+    categoryName: '场景英语',
+    coverGradient: 'from-amber-600 via-yellow-600 to-orange-800',
+    icon: '🏨',
+    description: '涵盖入住预订、客房升级、设施故障报修、洗衣叫醒与延时退房全场景地道口语。',
+    difficulty: '入门 A1',
+    tags: ['酒店住宿', '前台沟通', '客房报修', '礼貌退房'],
+    chapters: generateCurriculumChapters('hot', [
+      { title: '第 1 章 · 前台办理入住与姓名预订确认' },
+      { title: '第 2 章 · 房型升级与高楼层静音房协商' },
+      { title: '第 3 章 · 房卡失磁与加配门卡服务' },
+      { title: '第 4 章 · 询问免费早餐与行政酒廊权益' },
+      { title: '第 5 章 · 客房 Wi-Fi 连接与空调调试' },
+      { title: '第 6 章 · 呼叫额外毛巾、枕头与客房送餐' },
+      { title: '第 7 章 · 浴室热水故障与前台报修' },
+      { title: '第 8 章 · 紧急洗衣熨烫与干洗时效沟通' },
+      { title: '第 9 章 · 预约明晨早起人工叫醒电话' },
+      { title: '第 10 章 · 延迟退房与行李寄存服务' },
+      { title: '第 11 章 · 账单核对与明细发票开具' },
+      { title: '第 12 章 · 礼宾部呼叫计程车与周边旅游咨询' }
+    ], sceneCorpus)
+  },
+  {
+    id: 'course-scene-restaurant',
+    title: '西餐厅与咖啡馆 · 优雅点餐品酒指南 (12章全集)',
+    category: 'scenes',
+    categoryName: '场景英语',
+    coverGradient: 'from-emerald-600 via-teal-700 to-slate-900',
+    icon: '🍽️',
+    description: '牛排熟度、红酒搭配、忌口过敏表达、餐后甜点与地道分账买单礼仪。',
+    difficulty: '初级 A2',
+    tags: ['西餐礼仪', '牛排熟度', '品酒搭配', '买单小费'],
+    chapters: generateCurriculumChapters('res', [
+      { title: '第 1 章 · 餐厅预约与露天景观座要求' },
+      { title: '第 2 章 · 开胃前菜与特色餐前包点选' },
+      { title: '第 3 章 · 牛排三大熟度与佐料酱汁搭配' },
+      { title: '第 4 章 · 侍酒师推荐佐餐红白葡萄酒' },
+      { title: '第 5 章 · 海鲜与素食无麸质特别要求' },
+      { title: '第 6 章 · 催菜与牛排重新加热委婉沟通' },
+      { title: '第 7 章 · 经典意式浓缩与手冲咖啡定制' },
+      { title: '第 8 章 · 招牌提拉米苏与餐后法式甜点' },
+      { title: '第 9 章 · 叫服务员买单与账单错误核对' },
+      { title: '第 10 章 · AA制平摊账单与分卡刷付' },
+      { title: '第 11 章 · 西方小费计算与支付得体礼仪' },
+      { title: '第 12 章 · 吃不完打包与环保外带盒索要' }
+    ], sceneCorpus)
+  },
+  {
+    id: 'course-scene-interview',
+    title: '外企求职全英面试 · 高薪应答逻辑金句 (12章全集)',
+    category: 'scenes',
+    categoryName: '场景英语',
+    coverGradient: 'from-blue-700 via-indigo-800 to-slate-950',
+    icon: '💼',
+    description: '掌握 STAR 逻辑法则、跨部门沟通协作、冲突处理与高薪谈判技巧。',
+    difficulty: '中级 B1',
+    tags: ['外企面试', 'STAR法则', '薪资谈判', '职业进阶'],
+    chapters: generateCurriculumChapters('int', [
+      { title: '第 1 章 · 开场暖场与 90 秒极简高光自我介绍' },
+      { title: '第 2 章 · 讲述过往核心项目成功落地案例' },
+      { title: '第 3 章 · STAR 法则清晰阐述复杂工作挑战' },
+      { title: '第 4 章 · 如何得体阐述个人弱点与改进成效' },
+      { title: '第 5 章 · 跨部门沟通冲突与团队共识达成' },
+      { title: '第 6 章 · 紧迫交付期下的多任务优先级管理' },
+      { title: '第 7 章 · 阐述为何离开上一家公司的最佳措辞' },
+      { title: '第 8 章 · 表达对本公司文化与产品愿景的共鸣' },
+      { title: '第 9 章 · 主动向面试官提问展现战略性思维' },
+      { title: '第 10 章 · HR 谈薪与期望薪酬包委婉博弈' },
+      { title: '第 11 章 · 补充背调信息与入职体检时效' },
+      { title: '第 12 章 · 面试后 24 小时黄金感谢信范本' }
+    ], sceneCorpus)
+  },
+  {
+    id: 'course-scene-hospital',
+    title: '海外看病就医 · 症状描述与药房取药 (12章全集)',
+    category: 'scenes',
+    categoryName: '场景英语',
+    coverGradient: 'from-teal-600 via-cyan-700 to-slate-800',
+    icon: '🏥',
+    description: '精准描述疼痛部位、过敏史、处方药说明与紧急救护车呼叫对话。',
+    difficulty: '初级 A2',
+    tags: ['看病就医', '症状表达', '药房处方', '海外急救'],
+    chapters: generateCurriculumChapters('med', [
+      { title: '第 1 章 · 急诊挂号与医保信息登记' },
+      { title: '第 2 章 · 头痛发烧与感冒体温精准描述' },
+      { title: '第 3 章 · 肠胃绞痛、恶心与腹泻细节' },
+      { title: '第 4 章 · 跌打扭伤与骨折拍 X 光片检查' },
+      { title: '第 5 章 · 药物过敏与既往病史清晰陈述' },
+      { title: '第 6 章 · 医生听诊与化验抽血告知事项' },
+      { title: '第 7 章 · 药房凭处方取药与剂量服用说明' },
+      { title: '第 8 章 · 牙科诊所洗牙、补牙与拔牙咨询' },
+      { title: '第 9 章 · 眼科验光与隐形眼镜护理配镜' },
+      { title: '第 10 章 · 皮肤红疹、蚊虫叮咬与外用软膏' },
+      { title: '第 11 章 · 医疗发票索取与商业保险理赔' },
+      { title: '第 12 章 · 突发意外呼叫 911 救护车应急口语' }
+    ], sceneCorpus)
+  },
+  {
+    id: 'course-scene-shopping',
+    title: '海外购物与退税 · 试穿尺码与优惠沟通 (12章全集)',
+    category: 'scenes',
+    categoryName: '场景英语',
+    coverGradient: 'from-pink-600 via-rose-600 to-amber-700',
+    icon: '🛍️',
+    description: '免税店砍价、精品店试衣改衣、质量瑕疵退换与机场海关退税单盖章。',
+    difficulty: '入门 A1',
+    tags: ['免税退税', '商场血拼', '试穿尺码', '砍价打折'],
+    chapters: generateCurriculumChapters('shop', [
+      { title: '第 1 章 · 专柜寻货与店员主动询问' },
+      { title: '第 2 章 · 试衣间排队与换大一号/小一号尺码' },
+      { title: '第 3 章 · 询问材质是否纯羊毛或真皮面料' },
+      { title: '第 4 章 · 会员专享折扣与买二赠一促销' },
+      { title: '第 5 章 · 瑕疵检查与索取全新未拆封商品' },
+      { title: '第 6 章 · 免税店出示登机牌与专属优惠券' },
+      { title: '第 7 章 · 索取退税单与商家盖章要点' },
+      { title: '第 8 章 · 贵重礼品精致包装与附赠卡片' },
+      { title: '第 9 章 · 现金找零与刷双币信用卡选项' },
+      { title: '第 10 章 · 商品不合适凭小票退货或换货' },
+      { title: '第 11 章 · 电子产品保修凭证与全球联保' },
+      { title: '第 12 章 · 机场海关退税盖章与现金退还' }
+    ], sceneCorpus)
+  },
+  {
+    id: 'course-scene-rentcar',
+    title: '海外自驾租车与问路 · 交通规则完全手册 (12章全集)',
+    category: 'scenes',
+    categoryName: '场景英语',
+    coverGradient: 'from-orange-600 via-amber-700 to-stone-900',
+    icon: '🚗',
+    description: '取车验车、全险责任豁免、加油站自助加油、迷路求助与违章停车。',
+    difficulty: '初级 A2',
+    tags: ['海外自驾', '租车全险', '加油站', '交警问路'],
+    chapters: generateCurriculumChapters('car', [
+      { title: '第 1 章 · 租车柜台出示国际驾照与订单' },
+      { title: '第 2 章 · 选购零免赔碰撞险与道路救援' },
+      { title: '第 3 章 · 停车场车身划痕核对与初始里程' },
+      { title: '第 4 章 · 汽车仪表盘与 GPS 导航语言设置' },
+      { title: '第 5 章 · 自助加油站选择汽油标号与刷卡' },
+      { title: '第 6 章 · 高速公路收费站现金与 ETC 通道' },
+      { title: '第 7 章 · 环岛行驶路权与 Stop 标志停车让行' },
+      { title: '第 8 章 · 迷路时向街头行人与交警问路' },
+      { title: '第 9 章 · 市中心咪表停车缴费与时间限制' },
+      { title: '第 10 章 · 爆胎抛锚呼叫 24 小时拖车热线' },
+      { title: '第 11 章 · 车辆剐蹭事故报警与交换保险单据' },
+      { title: '第 12 章 · 满油还车与最后押金退回确认' }
+    ], sceneCorpus)
+  },
+  {
+    id: 'course-scene-business',
+    title: '涉外商务外贸 · 商务谈判与外贸邮件 (12章全集)',
+    category: 'scenes',
+    categoryName: '场景英语',
+    coverGradient: 'from-slate-700 via-indigo-900 to-black',
+    icon: '📊',
+    description: '询盘报盘、信用证支付方式、交货期违约条款与跨国商务函电。',
+    difficulty: '中级 B1',
+    tags: ['外贸询盘', '信用证L/C', '交期违约', '商务英语'],
+    chapters: generateCurriculumChapters('biz', [
+      { title: '第 1 章 · 初次询盘与索取最新产品目录册' },
+      { title: '第 2 章 · FOB 与 CIF 国际贸易术语报价' },
+      { title: '第 3 章 · 大批量采购阶梯折扣价格博弈' },
+      { title: '第 4 章 · 寄送样品与客户实物打样验收' },
+      { title: '第 5 章 · 不可撤销即期信用证条款商定' },
+      { title: '第 6 章 · 生产周期延期预警与货期协商' },
+      { title: '第 7 章 · 海运整柜装箱与提单放行通知' },
+      { title: '第 8 章 · 货物运输途中不可抗力免责声明' },
+      { title: '第 9 章 · 到货质量检验不符与索赔商谈' },
+      { title: '第 10 章 · 长期战略分销代理权协议签署' },
+      { title: '第 11 章 · 国际商务展会接待外商与邀约' },
+      { title: '第 12 章 · 商务晚宴祝酒词与长期合作致谢' }
+    ], sceneCorpus)
+  }
+];

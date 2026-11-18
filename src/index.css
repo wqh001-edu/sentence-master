@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+code, kbd, pre {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* 隐藏默认滚动条但保持可滚动 */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 词卡凹凸质感 - 类似句乐部/多邻国的清爽交互感 */
+.card-pressable {
+  transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 3px 0 0 rgba(0, 0, 0, 0.08);
+}
+.card-pressable:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.1);
+}
+.card-pressable:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08);
+}
