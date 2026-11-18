@@ -25,7 +25,7 @@ export function usePracticeState({
   // 目标词块序列（按原句顺序）
   const targetTokens: ChunkToken[] = useMemo(() => {
     if (!currentSentence) return [];
-    return tokenizeSentence(currentSentence.english, settings.splitMode, currentSentence.customChunks);
+    return tokenizeSentence(currentSentence.english, settings.splitMode, currentSentence.customChunks ?? undefined);
   }, [currentSentence, settings.splitMode]);
 
   // 已放置到槽位的词块

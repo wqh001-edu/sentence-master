@@ -11,6 +11,7 @@ import { KIDS_COURSES } from './kids';
 import { RECOMMENDED_COURSES } from './recommended';
 
 export { CATEGORIES };
+export const COURSE_CATEGORIES = CATEGORIES;
 
 // 汇聚 9 大分类所有 72+ 个精品课程包
 export const ALL_COURSES: CoursePackage[] = [

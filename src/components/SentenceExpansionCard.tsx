@@ -19,7 +19,7 @@ export const SentenceExpansionCard: React.FC<SentenceExpansionCardProps> = ({
 
   if (!isFinished) return null;
 
-  const expansion = generateDynamicExpansion(sentence.english, sentence.expansion);
+  const expansion = generateDynamicExpansion(sentence.english, sentence.expansion ?? undefined);
 
   return (
     <div className="w-full max-w-3xl mx-auto my-5 px-3 animate-slide-up">

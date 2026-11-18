@@ -1,0 +1,87 @@
+import re
+import json
+import os
+
+GLOBAL_SEEN = {}
+ALL_RECORDS = []
+
+def normalize(text: str) -> str:
+    return re.sub(r'[^a-z0-9]', '', text.lower().strip())
+
+def make_sentence(en: str, cn: str, course_title: str, chapter_title: str):
+    en_clean = en.strip()
+    cn_clean = cn.strip()
+    norm = normalize(en_clean)
+    
+    if len(norm) > 4:
+        if norm in GLOBAL_SEEN:
+            prev = GLOBAL_SEEN[norm]
+            raise ValueError(
+                f"\n❌ [重复句子拦截] 发现跨课/跨章重复！\n"
+                f"   重复英文: \"{en_clean}\"\n"
+                f"   初次出现: 《{prev['course']}》- {prev['chapter']}\n"
+                f"   再次出现: 《{course_title}》- {chapter_title}\n"
+            )
+        GLOBAL_SEEN[norm] = {'course': course_title, 'chapter': chapter_title, 'en': en_clean}
+        ALL_RECORDS.append({'norm': norm, 'en': en_clean, 'course': course_title, 'chapter': chapter_title})
+        
+    return {"english": en_clean, "chinese": cn_clean}
+
+def build_course(meta: dict, chapters_raw: list) -> dict:
+    course_id = meta["id"]
+    course_title = meta["title"]
+    chapters = []
+    
+    if len(chapters_raw) < 10:
+        raise ValueError(f"课程《{course_title}》章节数不足 10 章！当前为 {len(chapters_raw)}")
+        
+    for ch_idx, ch in enumerate(chapters_raw):
+        ch_id = f"{course_id}-ch{ch_idx + 1}"
+        ch_title = ch["title"]
+        ch_desc = ch.get("description", "")
+        raw_sents = ch["sentences"]
+        
+        if len(raw_sents) < 15:
+            raise ValueError(f"章节《{course_title}》- {ch_title} 句子数不足 15 句！当前仅有 {len(raw_sents)} 句")
+            
+        sentences = []
+        for s_idx, s in enumerate(raw_sents[:15]): # 严格规范 15 句
+            s_id = f"{ch_id}-s{s_idx + 1}"
+            checked = make_sentence(s["en"], s["cn"], course_title, ch_title)
+            sentences.append({
+                "id": s_id,
+                "english": checked["english"],
+                "chinese": checked["chinese"]
+            })
+            
+        chapters.append({
+            "id": ch_id,
+            "title": ch_title,
+            "description": ch_desc,
+            "sentences": sentences
+        })
+        
+    return {
+        "id": course_id,
+        "title": course_title,
+        "category": meta["category"],
+        "categoryName": meta["categoryName"],
+        "coverGradient": meta["coverGradient"],
+        "icon": meta["icon"],
+        "description": meta["description"],
+        "difficulty": meta["difficulty"],
+        "tags": meta["tags"],
+        "chapters": chapters
+    }
+
+def save_course_file(category_id: str, var_name: str, courses: list):
+    output_path = os.path.join("src", "data", "mall", f"{category_id}.ts")
+    header = "import type { CoursePackage } from '../../types';\n\n"
+    body = f"export const {var_name}: CoursePackage[] = " + json.dumps(courses, ensure_ascii=False, indent=2) + ";\n"
+    
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(header + body)
+        
+    tot_ch = sum(len(c["chapters"]) for c in courses)
+    tot_s = sum(sum(len(ch["sentences"]) for ch in c["chapters"]) for c in courses)
+    print(f"📦 [已写入] {output_path.ljust(35)} | 课程: {len(courses)} 门 | 章节: {tot_ch} 个 | 句子: {tot_s} 句")

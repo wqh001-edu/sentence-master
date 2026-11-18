@@ -54,18 +54,18 @@ export interface SentenceItem {
   id: string;
   english: string;
   chinese: string;
-  phonetic?: string;          // 整句音标
-  customChunks?: string[];    // 自定义拆分语块
-  note?: string;              // 句型小贴士
-  wordsGrammar?: WordGrammar[];// 单词级语法信息
-  expansion?: SentenceExpansion; // 串记·联想·扩展
+  phonetic?: string | null;          // 整句音标
+  customChunks?: string[] | null;    // 自定义拆分语块
+  note?: string | null;              // 句型小贴士
+  wordsGrammar?: WordGrammar[] | null;// 单词级语法信息
+  expansion?: SentenceExpansion | null; // 串记·联想·扩展
 }
 
 // 章节单元
 export interface Chapter {
   id: string;
   title: string;
-  description?: string;
+  description?: string | null;
   sentences: SentenceItem[];
 }
 
@@ -82,7 +82,10 @@ export type CourseCategory =
   | 'music';        // 音乐英语（流行金曲、欧美老歌）
 
 // 难度等级
-export type DifficultyLevel = '入门 A1' | '初级 A2' | '中级 B1' | '中高 B2' | '高级 C1';
+export type DifficultyLevel = 
+  | '入门 A1' | '初级 A2' | '中级 B1' | '中高 B2' | '高级 C1'
+  | 'beginner' | 'intermediate' | 'advanced'
+  | (string & {});
 
 // 课程包单元（三级结构第二级）
 export interface CoursePackage {

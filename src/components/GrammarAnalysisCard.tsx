@@ -21,7 +21,7 @@ export const GrammarAnalysisCard: React.FC<GrammarAnalysisCardProps> = ({
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const wordCardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const wordGrammarList = parseSentenceGrammar(sentence.english, sentence.wordsGrammar);
+  const wordGrammarList = parseSentenceGrammar(sentence.english, sentence.wordsGrammar ?? undefined, sentence.chinese);
 
   // 当选中的单词改变时，自动将选中的单词平滑居中，并计算指示箭头位置
   useEffect(() => {
