@@ -142,7 +142,7 @@ export const GrammarAnalysisCard: React.FC<GrammarAnalysisCardProps> = ({
                     {/* 4. 释义与词性标签（保证 100% 中文） */}
                     <div className="mt-2 flex flex-col items-center text-center max-w-[85px]">
                       <span className="text-xs text-slate-200 font-medium truncate w-full" title={item.meaning}>
-                        {item.meaning || '核心词'}
+                        {item.shortMeaning || item.meaning || '实词'}
                       </span>
                       <span className="text-[10px] text-slate-400 mt-0.5 font-normal truncate w-full">
                         {item.pos || '实词'}

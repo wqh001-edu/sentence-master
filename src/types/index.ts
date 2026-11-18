@@ -17,6 +17,7 @@ export interface WordGrammar {
   pos?: string;               // 词性，如 感叹词、名词、动词、形容词、副词、助动词、限定词
   role?: SyntacticRole;       // 句子成分：状语、谓语、主语、宾语等
   meaning?: string;           // 单词在句中的中文释义
+  shortMeaning?: string;      // 词卡下方紧凑中文释义
   note?: string;              // 深入语法注解，如 "be (过去分词): 构成现在完成时"
   explanation?: string;       // 中文深入语法与用法解析
   example?: string;           // 经典英文例句
